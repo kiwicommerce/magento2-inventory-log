@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * KiwiCommerce
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
+ * If you wish to customise this module for your needs.
+ * Please contact us https://kiwicommerce.co.uk/contacts.
+ *
+ * @category   KiwiCommerce
+ * @package    KiwiCommerce_InventoryLog
+ * @copyright  Copyright (C) 2018 KiwiCommerce Ltd (https://kiwicommerce.co.uk/)
+ * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_product_save_before">
+        <observer name="kiwicommerce_inventory" instance="KiwiCommerce\InventoryLog\Observer\SaveInventoryDataObserver"/>
+    </event>
+
+    <event name="checkout_submit_all_after">
+        <observer name="kiwicommerce_order_place" instance="KiwiCommerce\InventoryLog\Observer\CheckoutAllSubmitAfter" />
+    </event>
+
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="kiwicommerce_inventory_log_credit_memo" instance="KiwiCommerce\InventoryLog\Observer\RefundOrderInventoryObserver"/>
+    </event>
+
+    <event name="catalog_product_import_bunch_save_after">
+        <observer name="kiwicommerce_import_products" instance="KiwiCommerce\InventoryLog\Observer\AfterImportProductData" />
+    </event>
+
+    <event name="catalog_product_import_finish_before">
+        <observer name="kiwicommerce_import_products_before" instance="KiwiCommerce\InventoryLog\Observer\ImportProductData" />
+    </event>
+
+    <event name="sales_model_service_quote_submit_failure">
+        <observer name="kiwicommerce_stock_movement_inventory" instance="KiwiCommerce\InventoryLog\Observer\RevertQuoteInventoryObserver"/>
+    </event>
+</config>

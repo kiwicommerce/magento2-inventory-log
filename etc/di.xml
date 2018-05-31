@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * KiwiCommerce
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer versions in the future.
+ * If you wish to customise this module for your needs.
+ * Please contact us https://kiwicommerce.co.uk/contacts.
+ *
+ * @category   KiwiCommerce
+ * @package    KiwiCommerce_InventoryLog
+ * @copyright  Copyright (C) 2018 KiwiCommerce Ltd (https://kiwicommerce.co.uk/)
+ * @license    https://kiwicommerce.co.uk/magento2-extension-license/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\CatalogInventory\Model\Stock\StockItemRepository">
+        <plugin name="update_stockitem_ukey" type="KiwiCommerce\InventoryLog\Plugin\Stock\StockItemRepository" sortOrder="1" disabled="false"/>
+    </type>
+
+    <preference for="Magento\CatalogImportExport\Model\Import\Product"
+                type="KiwiCommerce\InventoryLog\Plugin\Import\Product"/>
+
+    <type name="Magento\CatalogInventory\Observer\CancelOrderItemObserver">
+        <plugin name="KiwiCommerceCancelOrderItem" type="KiwiCommerce\InventoryLog\Plugin\CancelOrderItem" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\Framework\Module\Status">
+        <plugin name="KiwiCommerceModulStatus" type="KiwiCommerce\InventoryLog\Plugin\ModuleStatus" sortOrder="1" disabled="false"/>
+    </type>
+
+    <type name="Magento\CatalogInventory\Model\ResourceModel\Stock">
+        <plugin name="KiwiCommerceStockItemPlugin"  type="KiwiCommerce\InventoryLog\Plugin\StockPlugin"
+                sortOrder="1" disabled="false" />
+    </type>
+
+    <type name="Magento\Catalog\Controller\Adminhtml\Product\Action\Attribute\Save">
+        <plugin name="KiwiCommerceProductAttributeSavePlugin"  type="KiwiCommerce\InventoryLog\Plugin\ProductAttributeSave"
+                sortOrder="1" disabled="false" />
+    </type>
+
+    <preference for="KiwiCommerce\InventoryLog\Api\MovementRepositoryInterface" type="KiwiCommerce\InventoryLog\Model\MovementRepository"/>
+
+    <preference for="KiwiCommerce\InventoryLog\Api\Data\MovementInterface" type="KiwiCommerce\InventoryLog\Model\Movement"/>
+
+    <preference for="KiwiCommerce\InventoryLog\Api\Data\MovementSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="kiwicommerce_stock_movement_grid_data_source" xsi:type="string">KiwiCommerce\InventoryLog\Model\ResourceModel\Movement\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="KiwiCommerce\InventoryLog\Model\ResourceModel\Movement\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">kiwicommerce_stock_movement</argument>
+            <argument name="eventPrefix" xsi:type="string">kiwicommerce_stock_movement_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">kiwicommerce_stock_movement_collection</argument>
+            <argument name="resourceModel" xsi:type="string">KiwiCommerce\InventoryLog\Model\ResourceModel\Movement</argument>
+        </arguments>
+    </type>
+</config>
