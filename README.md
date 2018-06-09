@@ -1,4 +1,4 @@
-## Magento2 - Inventory Log by Kiwi Commerce
+## Magento 2 - Inventory Log by Kiwi Commerce
 
 ### Overview
 - Keep the log of product inventory for every single transaction. Ex. Product import, Order placed, Insert/Update operation through queries and lot more.
@@ -11,8 +11,32 @@
 	- Product created using API
 	- Credit Memo generation
 	- Order fail and Cancel
+### **Installation**
+ 
+ 1. Composer Installation
+      - Navigate to your Magento root folder<br />
+            `cd path_to_the_magento_root_directory`<br />
+      - Then run the following command<br />
+          `composer require kiwicommerce/module-inventory-log`<br/>
+      - Make sure that composer finished the installation without errors.
 
-Find More details on <a href="https://kiwicommerce.co.uk/extensions/magento2-inventory-log/" target="_blank">Kiwi Commerce Ltd</a>
+ 2. Command Line Installation
+      - Backup your web directory and database.
+      - Download Inventory Log installation package from <a href="https://github.com/kiwicommerce/magento2-inventory-log/releases/download/v1.0.0/kiwicommerce-inventory-log-v100.zip">here</a>.
+      - Upload contents of the Inventory Log installation package to your Magento root directory.
+      - Navigate to your Magento root folder<br />
+          `cd path_to_the_magento_root_directory`<br />
+      - Then run the following command<br />
+          `php bin/magento module:enable KiwiCommerce_InventoryLog`<br />
+      - Log out from the backend and log in again.
+   
+- After install the extension, run the following command <br/>
+          `php bin/magento setup:upgrade`<br />
+          `php bin/magento setup:di:compile`<br />
+          `php bin/magento setup:static-content:deploy`<br />
+          `php bin/magento cache:flush`
+          
+Find More details on <a href="https://kiwicommerce.co.uk/docs/inventory_log/" target="_blank">Kiwi Commerce</a>
 
 ## Features
 
@@ -38,11 +62,15 @@ You need to follow this path. Stores > Configuration > KIWICOMMERCE EXTENSIONS >
 - Database user must have to get the create trigger permission in order to use this extension.
 - After enabling disabled extension using the command, admin/user will have to enable the extension again from the store configuration
 
-## Documentation
+## Contribution
+Well unfortunately there is no formal way to contribute, we would encourage you to feel free and contribute by:
+ 
+  - Creating bug reports, issues or feature requests on <a target="_blank" href="https://github.com/kiwicommerce/magento2-inventory-log/issues">Github</a>
+  - Submitting pull requests for improvements.
+    
+We love answering questions or doubts simply ask us in issue section. We're looking forward to hearing from you!
+ 
+  - Follow us <a href="https://twitter.com/KiwiCommerce">@KiwiCommerce</a>
+  - <a href="mailto:support@kiwicommerce.co.uk">Email Us</a>
+  - Have a look at our <a href="https://kiwicommerce.co.uk/docs/inventory_log/">documentation</a> 
 
-For more detail, please check the <a href="https://kiwicommerce.co.uk/docs/inventory_log/" target="_blank">Documentation</a>.
-
-## Issue Reporting.
-Before doing issue reporting, please make sure you followed all <a href="https://kiwicommerce.co.uk/docs/issue_reporting_guidelines/" target="_blank">guidelines</a> properly.
-
-In case of further help, kindly create a <a href="https://github.com/kiwicommerce/magento2-inventory-log/issues" target="_blank">new issue here</a>.
