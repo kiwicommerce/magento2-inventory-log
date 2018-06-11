@@ -36,7 +36,7 @@
           `php bin/magento setup:static-content:deploy`<br />
           `php bin/magento cache:flush`
           
-Find More details on <a href="https://kiwicommerce.co.uk/docs/inventory_log/" target="_blank">Kiwi Commerce</a>
+Find More details on <a href="https://kiwicommerce.co.uk/extensions/magento2-inventory-log/" target="_blank">Kiwi Commerce</a>
 
 ## Features
 
@@ -47,7 +47,7 @@ Navigate to Product > Catalog and Click on edit link of the product
 <img src="https://kiwicommerce.co.uk/wp-content/uploads/2018/05/Product-View-Original.png"/><br/>
 
 ### Product Inventory log grid
-Click on *Inventory log* link and You will have respective product inventory log grid.
+Click on *Inventory log* link and you shall have respective product inventory log grid.
 
 <img src="https://kiwicommerce.co.uk/wp-content/uploads/2018/05/Inventory-Grid-Original.png"/><br/>
 
@@ -73,4 +73,3 @@ We love answering questions or doubts simply ask us in issue section. We're look
   - Follow us <a href="https://twitter.com/KiwiCommerce">@KiwiCommerce</a>
   - <a href="mailto:support@kiwicommerce.co.uk">Email Us</a>
   - Have a look at our <a href="https://kiwicommerce.co.uk/docs/inventory_log/">documentation</a> 
-
