@@ -17,12 +17,15 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="kiwicommerce" translate="label" sortOrder="2000">
-            <label>KiwiCommerce Extensions</label>
+            <label><![CDATA[<span class="kiwiCommerce-logo">KiwiCommerce Extensions</span>]]></label>
         </tab>
         <section id="inventory_log" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Inventory Log</label>
             <tab>kiwicommerce</tab>
             <resource>KiwiCommerce_InventoryLog::config</resource>
+            <group id="hint" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <frontend_model>KiwiCommerce\InventoryLog\Block\Adminhtml\System\Config\Fieldset\Hint</frontend_model>
+            </group>
             <group id="general" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Inventory Log</label>
                 <field id="inventory_enabled" translate="label" type="select" showInDefault="1" canRestore="1" showInWebsite="1" showInStore="1">
