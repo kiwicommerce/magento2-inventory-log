@@ -22,6 +22,10 @@
         <observer name="kiwicommerce_order_place" instance="KiwiCommerce\InventoryLog\Observer\CheckoutAllSubmitAfter" />
     </event>
 
+    <event name="paypal_express_place_order_success">
+        <observer name="kiwicommerce_paypal_order_place" instance="KiwiCommerce\InventoryLog\Observer\CheckoutAllSubmitAfter" />
+    </event>
+
     <event name="sales_order_creditmemo_save_after">
         <observer name="kiwicommerce_inventory_log_credit_memo" instance="KiwiCommerce\InventoryLog\Observer\RefundOrderInventoryObserver"/>
     </event>
