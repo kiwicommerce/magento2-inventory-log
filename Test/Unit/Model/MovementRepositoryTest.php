@@ -18,7 +18,7 @@ use KiwiCommerce\InventoryLog\Model\MovementRepository;
 /**
  * Test for KiwiCommerce\InventoryLog\Model\MovementRepository
  */
-class MovementRepositoryTest extends \PHPUnit_Framework_TestCase
+class MovementRepositoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject|\KiwiCommerce\InventoryLog\Model\ResourceModel\Movement
@@ -246,6 +246,9 @@ class MovementRepositoryTest extends \PHPUnit_Framework_TestCase
                                         ->disableOriginalConstructor()
                                         ->getMock();
 
+        $this->productMetadataMock = $this->getMockBuilder('Magento\Framework\App\ProductMetadataInterface')
+            ->getMock();
+
         $this->repository = new MovementRepository(
             $this->movementResource,
             $this->movementFactory,
@@ -255,7 +258,8 @@ class MovementRepositoryTest extends \PHPUnit_Framework_TestCase
             $this->dataHelper,
             $this->dataObjectProcessor,
             $this->storeManager,
-            $this->movementDataHelper
+            $this->movementDataHelper,
+            $this->productMetadataMock
         );
     }
 

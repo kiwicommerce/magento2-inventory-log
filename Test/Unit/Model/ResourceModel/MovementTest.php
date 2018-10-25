@@ -19,7 +19,7 @@ use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Framework\EntityManager\EntityManager;
 use Magento\Framework\App\ResourceConnection;
 
-class MovementTest extends \PHPUnit_Framework_TestCase
+class MovementTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \PHPUnit_Framework_MockObject_MockObject|\Magento\Framework\Model\ResourceModel\Db\Context
