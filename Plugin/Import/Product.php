@@ -242,7 +242,10 @@ class Product extends \Magento\CatalogImportExport\Model\Import\Product
 
                 $this->reindexProducts($productIdsToReindex);
             }
+        } else {
+            parent::_saveStockItem();
         }
+        
         return $this;
     }
 }
