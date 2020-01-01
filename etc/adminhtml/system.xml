@@ -17,7 +17,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="kiwicommerce" translate="label" sortOrder="2000">
-            <label><![CDATA[<span class="kiwiCommerce-logo">KiwiCommerce Extensions</span>]]></label>
+            <label><![CDATA[KiwiCommerce Extensions]]></label>
         </tab>
         <section id="inventory_log" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Inventory Log</label>
