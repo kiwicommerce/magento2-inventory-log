@@ -23,6 +23,8 @@ class ModuleStatus
      */
     public $configResource;
 
+    const EXTENSION_NAME = 'KiwiCommerce_InventoryLog';
+
     /**
      * ModuleStatus constructor.
      * @param ConfigResource $configResource
@@ -47,36 +49,41 @@ class ModuleStatus
         $isEnabled,
         $modules
     ) {
-        $deleteParams = [];
+        // Check KiwiCommerce_InventoryLog is disabled then remove entry from core_config_data table
+        if (in_array(self::EXTENSION_NAME, $modules) && empty($isEnabled)) {
 
-        $deleteParams['default'][] = 0;
-        $stores = $this->_storeManager->getStores();
-        if (!empty($stores)) {
-            foreach ($stores as $storeKey => $storeVal) {
-                $deleteParams['stores'][] = $storeKey;
-            }
-        }
+            $deleteParams = [];
 
-        $websites = $this->_storeManager->getWebsites();
-        if (!empty($websites)) {
-            foreach ($websites as $websiteKay => $websiteVal) {
-                $deleteParams['websites'][] = $websiteKay;
+            $deleteParams['default'][] = 0;
+            $stores = $this->_storeManager->getStores();
+            if (!empty($stores)) {
+                foreach ($stores as $storeKey => $storeVal) {
+                    $deleteParams['stores'][] = $storeKey;
+                }
             }
-        }
-        
-        if (!empty($deleteParams)) {
-            foreach ($deleteParams as $deleteParamKay => $deleteParamVals) {
-                if (!empty($deleteParamVals)) {
-                    foreach ($deleteParamVals as $deleteParamVals) {
-                        $this->configResource->deleteConfig(
-                            StockMovementHelper::CONFIG_ENABLE_PATH,
-                            $deleteParamKay,
-                            $deleteParamVals
-                        );
+
+            $websites = $this->_storeManager->getWebsites();
+            if (!empty($websites)) {
+                foreach ($websites as $websiteKay => $websiteVal) {
+                    $deleteParams['websites'][] = $websiteKay;
+                }
+            }
+
+            if (!empty($deleteParams)) {
+                foreach ($deleteParams as $deleteParamKay => $deleteParamVals) {
+                    if (!empty($deleteParamVals)) {
+                        foreach ($deleteParamVals as $deleteParamVals) {
+                            $this->configResource->deleteConfig(
+                                StockMovementHelper::CONFIG_ENABLE_PATH,
+                                $deleteParamKay,
+                                $deleteParamVals
+                            );
+                        }
                     }
                 }
             }
         }
+
         return [$isEnabled, $modules];
     }
 }
