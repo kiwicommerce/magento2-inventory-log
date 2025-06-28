@@ -165,10 +165,6 @@ class Editproduct extends AbstractModifier
         $pathField = $this->arrayManager->findPath($fieldCode, $this->meta, null, 'children');
 
         if ($pathField) {
-            $labelField = $this->arrayManager->get(
-                $this->arrayManager->slicePath($pathField, 0, -2) . '/arguments/data/config/label',
-                $this->meta
-            );
             $fieldSetPath = $this->arrayManager->slicePath($pathField, 0, -4);
 
             $this->meta = $this->arrayManager->merge(
@@ -193,20 +189,6 @@ class Editproduct extends AbstractModifier
                 ]
             );
 
-            $container['arguments']['data']['config'] = [
-                'formElement' => 'container',
-                'componentType' => 'container',
-                'component' => "Magento_Ui/js/form/components/group",
-                'label' => $labelField,
-                'breakLine' => false,
-                'dataScope' => $fieldCode,
-                'scopeLabel' => '[GLOBAL]',
-                'source' => 'product_details',
-                'sortOrder' => (int) $this->arrayManager->get(
-                    $this->arrayManager->slicePath($pathField, 0, -2) . '/arguments/data/config/sortOrder',
-                    $this->meta
-                ) - 1,
-            ];
             $qty['arguments']['data']['config'] = [
                 'component' => 'Magento_CatalogInventory/js/components/qty-validator-changer',
                 'dataType' => 'number',
