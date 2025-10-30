@@ -11,24 +11,12 @@
     - Product created using API
     - Credit Memo generation
     - Order fail and Cancel
-  ### **Installation**
-  
-  1. Composer Installation
-        - Navigate to your Magento root folder<br />
-              `cd path_to_the_magento_root_directory`<br />
-        - Then run the following command<br />
-            `composer require kiwicommerce/module-inventory-log`<br/>
-        - Make sure that composer finished the installation without errors.
 
-  2. Command Line Installation
-        - Backup your web directory and database.
-        - Download Inventory Log installation package from <a href="https://github.com/kiwicommerce/magento2-inventory-log/releases/download/v1.0.1/kiwicommerce-inventory-log-v101.zip">here</a>.
-        - Upload contents of the Inventory Log installation package to your Magento root directory.
-        - Navigate to your Magento root folder<br />
-            `cd path_to_the_magento_root_directory`<br />
-        - Then run the following command<br />
-            `php bin/magento module:enable KiwiCommerce_InventoryLog`<br />
-        - Log out from the backend and log in again.
+
+  ## Installation
+  1. Download the latest the admin activity extension from [here](https://kiwicommerce.co.uk/product/inventory-log/)
+  2. Download the module package and extract it.
+  3. Copy the extracted files to `app/code/KiwiCommerce/KiwiCommerce_InventoryLog`.
     
   - After install the extension, run the following command <br/>
             `php bin/magento setup:upgrade`<br />
@@ -36,7 +24,7 @@
             `php bin/magento setup:static-content:deploy`<br />
             `php bin/magento cache:flush`
             
-  Find More details on <a href="https://kiwicommerce.co.uk/extensions/magento2-inventory-log/" target="_blank">KiwiCommerce</a>
+  Find More details on <a href="https://kiwicommerce.co.uk/product/inventory-log/" target="_blank">KiwiCommerce</a>
 
   ## Features
 
